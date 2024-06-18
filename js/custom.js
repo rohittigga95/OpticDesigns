@@ -83,19 +83,19 @@ $win.on('load', function() {
         $time2 = 3000;
     }
     //mask tel
-    // if ($('[type="tel"]').length > 0) {
-    //     setTimeout(function() {
-    //         loadJS('js/components/maskedinput.js', maskFunc, document.body);
+    if ($('[type="tel"]').length > 0) {
+        setTimeout(function() {
+            loadJS('js/components/maskedinput.js', maskFunc, document.body);
 
-    //         function maskFunc() {
-    //             $('[type="tel"]').inputmask({
-    //                 mask: "9999999999",
-    //                 showMaskOnHover: false
-    //             });
-    //         }
-    //     }, $time2);
+            function maskFunc() {
+                $('[type="tel"]').inputmask({
+                    mask: "9999999999",
+                    showMaskOnHover: false
+                });
+            }
+        }, $time2);
 
-    // }
+    }
 });
  $(function() {
 
