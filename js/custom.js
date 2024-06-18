@@ -89,7 +89,7 @@ $win.on('load', function() {
 
             function maskFunc() {
                 $('[type="tel"]').inputmask({
-                    mask: "9999999999",
+                    mask: "9999 999 99 9",
                     showMaskOnHover: false
                 });
             }
