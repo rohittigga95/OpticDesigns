@@ -193,7 +193,7 @@
                                     <p>On submiting the form our executive will contact you and discuss details of the project.</p>
                                 </div>
                                 <div class="consultation-form__form">
-                                    <form onsubmit="successSubmit();return false;">
+                                    <form onsubmit="successSubmit1();return false;">
                                         <div class="box-fileds">
                                             <div class="box-filed">
                                                 <input type="text" placeholder="First name" required >
@@ -545,7 +545,7 @@
                 </div>
                 <div class="footer-bottom">
                     <div class="wrapper">
-                        <div class="copyrights">© OPTICDESIGNS 2024. </div>
+                        <div class="copyrights">© OPTICDESIGNS 2024. All rights reserved.</div>
                         <div class="footer-menu">
                             <ul class="js-menu-footer">
                                 <li>
@@ -581,13 +581,13 @@
                     <form onsubmit="successSubmit();return false;">
                         <div class="popup-form">
                             <div class="box-field">
-                                <input type="text" placeholder="Name" required >
+                                <input type="text" placeholder="Name" name="name" required >
                             </div>
                             <div class="box-field">
-                                <input type="tel"  placeholder="Phone" maxlength="10" required>
+                                <input type="tel"  placeholder="Phone" name="phone"  maxlength="10" required>
                             </div>
                             <div class="box-field">
-                                <textarea placeholder="Message"></textarea>
+                                <textarea placeholder="Message" name="message"></textarea>
                             </div>
                             <div class="box-fileds box-fileds_2">
                                 <div class="box-filed box-filed_btn">
@@ -620,7 +620,29 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
+        <script>
+            const form = document.querySelector("#form")
+            const submitButton = document.querySelector("#submit")
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx5o6htjEPoyyz3TNYailPmxYJikyVSW4-0nGSkXTaOSoWPu32OJiTSXYyGbScBqQLaqA/exec'
+         
+            form.addEventListener('submit', e => {
+              submitButton.disabled = true
+              e.preventDefault()
+              let requestBody = new FormData(form)
+              fetch(scriptURL, { method: 'POST', body: requestBody})
+                .then(response => {
+                   alert('Success!', response)
+                   submitButton.disabled = false
+                  })
+                .catch(error => {
+                alert('Error!', error.message)
+                  submitButton.disabled = false
+         
+                }
+                )
+            })
+         </script>        
         <script>
             var body = document.body;
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
