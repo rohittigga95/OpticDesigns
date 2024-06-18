@@ -698,7 +698,9 @@ body:not(.loaded) .leaf-right-decor { background: url(../img/bg/leaf-right.svg) 
 @media screen and (max-width: 479px) { .services__item { width: calc(100% - 2rem); }
   .services__item:nth-child(even) { -webkit-transform: none; -ms-transform: none; transform: none; }
   .services__decor { max-width: 19rem; }
-  .news__title { font-size: 1.5rem; } }
+  .news__title { font-size: 1.5rem; } 
+  .section-services-main{margin-top: 20px;}
+}
 
 @media screen and (max-width: 374px) { .h1-main { font-size: 3.2rem; } }
 
