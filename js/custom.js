@@ -15,27 +15,48 @@ var loadJS = function(url, implementationCode, location) {
     location.appendChild(scriptTag);
 };
 successSubmit = function(elem) {
-    const form = document.querySelector("#form")
-            const submitButton = document.querySelector("#submit")
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbx5o6htjEPoyyz3TNYailPmxYJikyVSW4-0nGSkXTaOSoWPu32OJiTSXYyGbScBqQLaqA/exec'
-         
-            form.addEventListener('submit', e => {
-              submitButton.disabled = true
-              e.preventDefault()
-              let requestBody = new FormData(form)
-              fetch(scriptURL, { method: 'POST', body: requestBody})
-                .then(response => {
-                   alert('Success!', response)
-                   submitButton.disabled = false
-                  })
-                .catch(error => {
-                alert('Error!', error.message)
-                  submitButton.disabled = false
-         
-                }
-                )
+    $flagFancy = true;
+    parent.jQuery.fancybox.getInstance().close();
+    $flagFancy = true;
+    $.fancybox.open({
+        padding: 0,
+        src: '#succsesOrder',
+
+        transitionIn: 'fade',
+        transitionOut: 'fade',
+        padding: 0,
+        margin: 0,
+        speedIn: 0,
+        speedOut: 0,
+        smallBtn: true,
+        toolbar: false,
+        btnTpl: {
+            smallBtn: '<button type="button" data-fancybox-close class="fancybox-button fancybox-close-small"><i class="icon-close"></i></button>'
+        },
+        onInit: function() {
+            setTimeout(function() {
+                $('.js-stickly:not(.sticksy-dummy-node)').attr('style', $styles)
             })
+        },
+        beforeShow: function() {
+            if (!$flagFancy) {
+                lockScroll();
+            }
+        },
+        afterClose: function() {
+
+            if (!$flagFancy) {
+                unlockScroll();
+
+                setTimeout(function() {
+                    $('.js-stickly:not(.sticksy-dummy-node)').attr('style', $styles)
+                })
+            }
+            $flagFancy = false
+        }
+    });
 }
+
 
 $win.on('load', function() {
 
